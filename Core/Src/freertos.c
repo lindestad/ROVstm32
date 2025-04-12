@@ -34,6 +34,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#include "cJSON.h"
+#include "cmsis_os.h"  // FreeRTOS CMSIS-OS API
+#include "server_task.h"
 
 /* USER CODE END PD */
 
@@ -70,6 +73,11 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-
+void init_cjson_hooks(void) {
+    cJSON_Hooks hooks;
+    hooks.malloc_fn = pvPortMalloc;
+    hooks.free_fn   = vPortFree;
+    cJSON_InitHooks(&hooks);
+}
 /* USER CODE END Application */
 

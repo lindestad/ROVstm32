@@ -30,6 +30,8 @@
 
 /* Within 'USER CODE' section, code will be kept by default at each generation */
 /* USER CODE BEGIN 0 */
+#define LWIP_ICMP 1
+#define LWIP_RAW  1
 
 /* USER CODE END 0 */
 

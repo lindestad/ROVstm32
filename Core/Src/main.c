@@ -23,6 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "server_task.h"
 
 /* USER CODE END Includes */
 
@@ -474,6 +475,8 @@ void StartDefaultTask(void const * argument)
   /* init code for LWIP */
   MX_LWIP_Init();
   /* USER CODE BEGIN 5 */
+  init_cjson_hooks(); // Make cJSON use FreeRTIS heap alloc
+  ServerTask_Start();
   /* Infinite loop */
   for(;;)
   {
